@@ -31,32 +31,33 @@
  *
  * @param  {Function} `<fn>` function to be called.
  * @param  {Function} `[cb]` callback with `cb(err, res)` signature.
+ * @param  {Function} `[passCallback]` pass the `cb` to `fn` when calling it.
  * @return {Function} `thunk` if `cb` not given.
  * @throws {TypError} if `fn` not a function.
  * @throws {TypError} if no function is passed to `thunk`.
  * @api public
  */
 
-module.exports = function tryCatchCallback (fn, cb) {
+module.exports = function tryCatchCallback (fn, cb, passCallback) {
   if (typeof fn !== 'function') {
     throw new TypeError('try-catch-callback: expect `fn` to be a function')
   }
   if (typeof cb !== 'function') {
     return function thunk (done) {
-      tryCatch(fn, done)
+      tryCatch(fn, done, passCallback)
     }
   }
-  tryCatch(fn, cb)
+  tryCatch(fn, cb, passCallback)
 }
 
-function tryCatch (fn, cb) {
+function tryCatch (fn, cb, passCallback) {
   if (typeof cb !== 'function') {
     throw new TypeError('try-catch-callback: expect `cb` to be a function')
   }
   var ret = null
 
   try {
-    ret = fn()
+    ret = passCallback === true ? fn(cb) : fn()
   } catch (err) {
     if (!cb.called) return cb(err)
   }

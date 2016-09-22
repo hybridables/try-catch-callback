@@ -62,3 +62,15 @@ test('should return thunk if no `cb` passed', function (done) {
     done()
   })
 })
+
+test('should pass the `cb` to `fn` if 3rd arg is strictly `true`', function (done) {
+  tryCatch(function (cb) {
+    test.strictEqual(typeof cb, 'function')
+  }, done, true)
+})
+
+test('should `fn` not have arguments if 3rd arg is not `true`', function (done) {
+  tryCatch(function () {
+    test.strictEqual(arguments.length, 0)
+  }, done)
+})

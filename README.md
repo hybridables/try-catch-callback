@@ -16,13 +16,14 @@ npm i try-catch-callback --save
 const tryCatchCallback = require('try-catch-callback')
 ```
 
-### [tryCatchCallback](index.js#L40)
+### [tryCatchCallback](index.js#L41)
 > Pass a synchronous `fn` that returns some result and handle completion or errors in `cb` if given, otherwise it returns thunk which accepts that `cb`. It's possible to not work in "async mode", if that's the case try to use [try-catch-core][] for your case, which guarantees that `cb` is called only once and always in next tick, using [dezalgo][] and [once][].
 
 **Params**
 
 * `<fn>` **{Function}**: function to be called.    
 * `[cb]` **{Function}**: callback with `cb(err, res)` signature.    
+* `[passCallback]` **{Function}**: pass the `cb` to `fn` when calling it.    
 * `returns` **{Function}** `thunk`: if `cb` not given.  
 * `throws` **{TypError}** if `fn` not a function.  
 * `throws` **{TypError}** if no function is passed to `thunk`.
