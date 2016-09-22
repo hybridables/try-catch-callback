@@ -59,6 +59,14 @@
     ],
     "lint": {
       "reflinks": true
-    }
+    },
+    "related": {
+      "list": []
+    },
+    "reflinks": [
+      "dezalgo",
+      "once",
+      "try-catch-core"
+    ]
   }
 }

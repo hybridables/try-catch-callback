@@ -16,6 +16,28 @@ npm i try-catch-callback --save
 const tryCatchCallback = require('try-catch-callback')
 ```
 
+### [tryCatchCallback](index.js#L40)
+> Pass a synchronous `fn` that returns some result and handle completion or errors in `cb` if given, otherwise it returns thunk which accepts that `cb`. It's possible to not work in "async mode", if that's the case try to use [try-catch-core][] for your case, which guarantees that `cb` is called only once and always in next tick, using [dezalgo][] and [once][].
+
+**Params**
+
+* `<fn>` **{Function}**: function to be called.    
+* `[cb]` **{Function}**: callback with `cb(err, res)` signature.    
+* `returns` **{Function}** `thunk`: if `cb` not given.  
+
+**Example**
+
+```js
+var tryCatch = require('try-catch-callback')
+
+tryCatch(function () {
+  return 'fox qux'
+}, function done (err, res) {
+  if (err) return console.error(err)
+  console.log(res) // => 'fox qux'
+})
+```
+
 ## Contributing
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/tunnckoCore/try-catch-callback/issues/new).  
 But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) guidelines.
@@ -23,6 +45,10 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 ## [Charlike Make Reagent](http://j.mp/1stW47C) [![new message to charlike][new-message-img]][new-message-url] [![freenode #charlike][freenode-img]][freenode-url]
 
 [![tunnckoCore.tk][author-www-img]][author-www-url] [![keybase tunnckoCore][keybase-img]][keybase-url] [![tunnckoCore npm][author-npm-img]][author-npm-url] [![tunnckoCore twitter][author-twitter-img]][author-twitter-url] [![tunnckoCore github][author-github-img]][author-github-url]
+
+[dezalgo]: https://github.com/npm/dezalgo
+[once]: https://github.com/isaacs/once
+[try-catch-core]: https://github.com/tunnckocore/try-catch-core
 
 [npmjs-url]: https://www.npmjs.com/package/try-catch-callback
 [npmjs-img]: https://img.shields.io/npm/v/try-catch-callback.svg?label=try-catch-callback
@@ -69,4 +95,3 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [new-message-url]: https://github.com/tunnckoCore/ama
 [new-message-img]: https://img.shields.io/badge/ask%20me-anything-green.svg
 
-[try-catch-core]: https://github.com/tunnckocore/try-catch-core
