@@ -23,7 +23,7 @@ const tryCatchCallback = require('try-catch-callback')
 
 * `<fn>` **{Function}**: function to be called.    
 * `[cb]` **{Function}**: callback with `cb(err, res)` signature.    
-* `[passCallback]` **{Function}**: pass the `cb` to `fn` when calling it.    
+* `[passCallback]` **{Boolean}**: pass `true` if you want `cb` to be passed to `fn` args.    
 * `returns` **{Function}** `thunk`: if `cb` not given.  
 * `throws` **{TypError}** if `fn` not a function.  
 * `throws` **{TypError}** if no function is passed to `thunk`.

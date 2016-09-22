@@ -31,7 +31,7 @@
  *
  * @param  {Function} `<fn>` function to be called.
  * @param  {Function} `[cb]` callback with `cb(err, res)` signature.
- * @param  {Function} `[passCallback]` pass the `cb` to `fn` when calling it.
+ * @param  {Boolean} `[passCallback]` pass `true` if you want `cb` to be passed to `fn` args.
  * @return {Function} `thunk` if `cb` not given.
  * @throws {TypError} if `fn` not a function.
  * @throws {TypError} if no function is passed to `thunk`.
