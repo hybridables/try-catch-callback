@@ -24,6 +24,8 @@ const tryCatchCallback = require('try-catch-callback')
 * `<fn>` **{Function}**: function to be called.    
 * `[cb]` **{Function}**: callback with `cb(err, res)` signature.    
 * `returns` **{Function}** `thunk`: if `cb` not given.  
+* `throws` **{TypError}** if `fn` not a function.  
+* `throws` **{TypError}** if no function is passed to `thunk`.
 
 **Example**
 
