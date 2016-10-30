@@ -47,7 +47,7 @@ module.exports = function tryCatchCallback (fn, cb, opts) {
   }
   if (typeof cb !== 'function') {
     return function thunk (done) {
-      tryCatch.call(this, fn, done, opts)
+      tryCatch.call(this, fn, done, cb || opts)
     }
   }
   tryCatch.call(this, fn, cb, opts)

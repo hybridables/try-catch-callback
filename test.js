@@ -101,3 +101,12 @@ test('should pass custom context using `tryCatch.call`', function (done) {
     test.strictEqual(this.qux, true)
   }, done)
 })
+
+test('should allow passing options when want thunk', function (done) {
+  var thunk = tryCatch(function () {
+    test.strictEqual(this.a, 'b')
+  }, { context: { a: 'b' } })
+
+  test.strictEqual(typeof thunk, 'function')
+  thunk(done)
+})
