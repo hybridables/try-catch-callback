@@ -1,6 +1,6 @@
 {
   "name": "try-catch-callback",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "try/catch block with a callback, used in [try-catch-core][]. Use it when you don't care about asyncness so much and don't want guarantees. If you care use [try-catch-core][].",
   "repository": "tunnckoCore/try-catch-callback",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
@@ -69,7 +69,10 @@
     "reflinks": [
       "dezalgo",
       "once",
-      "try-catch-core"
+      "try-catch-core",
+      "es6-template",
+      "gana",
+      "gana-compile"
     ],
     "lint": {
       "reflinks": true

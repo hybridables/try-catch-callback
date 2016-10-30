@@ -31,7 +31,10 @@
  *
  * @param  {Function} `<fn>` function to be called.
  * @param  {Function} `[cb]` callback with `cb(err, res)` signature.
- * @param  {Boolean} `[passCallback]` pass `true` if you want `cb` to be passed to `fn` args.
+ * @param  {Object} `[opts]` optional options, such as `context` and `args`
+ * @param  {Object} `[opts.context]` context to be passed to `fn`
+ * @param  {Array} `[opts.args]` custom argument(s) to be pass to `fn`, given value is arrayified
+ * @param  {Boolean} `[opts.passCallback]` pass `true` if you want `cb` to be passed to `fn` args.
  * @return {Function} `thunk` if `cb` not given.
  * @throws {TypError} if `fn` not a function.
  * @throws {TypError} if no function is passed to `thunk`.

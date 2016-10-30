@@ -16,17 +16,18 @@ npm i try-catch-callback --save
 const tryCatchCallback = require('try-catch-callback')
 ```
 
-### [tryCatchCallback](index.js#L41)
+### [tryCatchCallback](index.js#L44)
 > Pass a synchronous `fn` that returns some result and handle completion or errors in `cb` if given, otherwise it returns thunk which accepts that `cb`. It's possible to not work in "async mode", if that's the case try to use [try-catch-core][] for your case, which guarantees that `cb` is called only once and always in next tick, using [dezalgo][] and [once][].
 
 **Params**
 
 * `<fn>` **{Function}**: function to be called.    
 * `[cb]` **{Function}**: callback with `cb(err, res)` signature.    
-* `[passCallback]` **{Boolean}**: pass `true` if you want `cb` to be passed to `fn` args.    
+* `[opts]` **{Object}**: optional options, such as `context` and `args`    
+* `[opts.context]` **{Object}**: context to be passed to `fn`    
+* `[opts.args]` **{Array}**: custom argument(s) to be pass to `fn`, given value is arrayified    
+* `[opts.passCallback]` **{Boolean}**: pass `true` if you want `cb` to be passed to `fn` args.    
 * `returns` **{Function}** `thunk`: if `cb` not given.  
-* `throws` **{TypError}** if `fn` not a function.  
-* `throws` **{TypError}** if no function is passed to `thunk`.
 
 **Example**
 
@@ -41,10 +42,42 @@ tryCatch(function () {
 })
 ```
 
+**passing custom context**
+
+```js
+const tryCatch = require('try-catch-callback')
+
+tryCatch(function () {
+  console.log(this.foo) // => 'bar'
+  console.log(this.baz) // => 'qux'
+  return `${this.foo}/${this.baz}`
+}, function done (err, res) {
+  if (err) return console.error(err)
+  console.log(res) // => 'bar/qux'
+}, {
+  context: { foo: 'bar', baz: 'qux' }
+})
+```
+
+**passing custom arguments**
+
+```js
+const tryCatchCallback = require('try-catch-callback')
+const done = (err, res) => console.log(res)
+const opts = {
+  args: [ { foo: 'zzz' }, 123 ]
+}
+
+tryCatchCallback((ctx, qux) => {
+  return ctx.foo + qux
+}, done, opts)
+// => 'zzz123'
+```
+
 ## Related
 - [catchup](https://www.npmjs.com/package/catchup): Graceful error handling. Because core `domain` module is deprecated. This share almost… [more](https://github.com/tunnckocore/catchup#readme) | [homepage](https://github.com/tunnckocore/catchup#readme "Graceful error handling. Because core `domain` module is deprecated. This share almost the same API.")
 - [gana-compile](https://www.npmjs.com/package/gana-compile): Pretty small synchronous template engine built on ES2015 Template Strings, working on… [more](https://github.com/tunnckocore/gana-compile#readme) | [homepage](https://github.com/tunnckocore/gana-compile#readme "Pretty small synchronous template engine built on ES2015 Template Strings, working on `node@0.10` too. No RegExps, support for helpers and what you want. Use [gana][] if you wanna both async and sync support.")
-- [gana](https://www.npmjs.com/package/gana): Pretty small synchronous template engine built on es6 template strings, working on… [more](https://github.com/tunnckocore/gana#readme) | [homepage](https://github.com/tunnckocore/gana#readme "Pretty small synchronous template engine built on es6 template strings, working on `node@0.10` too. Just 20 lines of code without RegExps and with support for helpers and what you want.")
+- [gana](https://www.npmjs.com/package/gana): Small and powerful template engine with only sync and async compile. The… [more](https://github.com/tunnckocore/gana#readme) | [homepage](https://github.com/tunnckocore/gana#readme "Small and powerful template engine with only sync and async compile. The mid-level between [es6-template][] and [gana-compile][].")
 - [try-catch-core](https://www.npmjs.com/package/try-catch-core): Asynchronous and sync tryCatch in one place. The callback is securely wrapped… [more](https://github.com/tunnckocore/try-catch-core#readme) | [homepage](https://github.com/tunnckocore/try-catch-core#readme "Asynchronous and sync tryCatch in one place. The callback is securely wrapped with a [dezalgo][] and [once][].")
 - [try-require-please](https://www.npmjs.com/package/try-require-please): Try to require the given module, failing loudly with default message if… [more](https://github.com/tunnckocore/try-require-please#readme) | [homepage](https://github.com/tunnckocore/try-require-please#readme "Try to require the given module, failing loudly with default message if module does not exists.")
 
@@ -57,6 +90,9 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [![tunnckoCore.tk][author-www-img]][author-www-url] [![keybase tunnckoCore][keybase-img]][keybase-url] [![tunnckoCore npm][author-npm-img]][author-npm-url] [![tunnckoCore twitter][author-twitter-img]][author-twitter-url] [![tunnckoCore github][author-github-img]][author-github-url]
 
 [dezalgo]: https://github.com/npm/dezalgo
+[es6-template]: https://github.com/tunnckocore/es6-template
+[gana-compile]: https://github.com/tunnckocore/gana-compile
+[gana]: https://github.com/tunnckocore/gana
 [once]: https://github.com/isaacs/once
 [try-catch-core]: https://github.com/tunnckocore/try-catch-core
 
@@ -105,4 +141,3 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [new-message-url]: https://github.com/tunnckoCore/ama
 [new-message-img]: https://img.shields.io/badge/ask%20me-anything-green.svg
 
-[gana]: https://github.com/tunnckocore/gana
