@@ -26,7 +26,7 @@ Some issues are created with missing information, not reproducible, or plain inv
 
 ### Give feedback on issues
 
-We're always looking for more opinions on discussions in the issue tracker. It's a good opportunity to influence the future direction of AVA.
+We're always looking for more opinions on discussions in the issue tracker. It's a good opportunity to influence the future direction of `try-catch-callback`.
 
 The [`question` label](https://github.com/tunnckoCore/try-catch-callback/labels/question) is a good place to find ongoing discussions.
 
