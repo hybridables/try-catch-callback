@@ -38,29 +38,38 @@
  * @api public
  */
 
-module.exports = function tryCatchCallback (fn, cb, passCallback) {
+module.exports = function tryCatchCallback (fn, cb, opts) {
   if (typeof fn !== 'function') {
     throw new TypeError('try-catch-callback: expect `fn` to be a function')
   }
   if (typeof cb !== 'function') {
     return function thunk (done) {
-      tryCatch(fn, done, passCallback)
+      tryCatch.call(this, fn, done, opts)
     }
   }
-  tryCatch(fn, cb, passCallback)
+  tryCatch.call(this, fn, cb, opts)
 }
 
-function tryCatch (fn, cb, passCallback) {
+function tryCatch (fn, cb, opts) {
   if (typeof cb !== 'function') {
     throw new TypeError('try-catch-callback: expect `cb` to be a function')
   }
+  var options = opts && typeof opts === 'object' ? opts : {}
+  var ctx = options.context || this
+  var args = arrayify(options.args)
   var ret = null
 
   try {
-    ret = passCallback === true ? fn(cb) : fn()
+    ret = fn.apply(ctx, options.passCallback ? args.concat(cb) : args)
   } catch (err) {
-    if (!cb.called) return cb(err)
+    return cb(err)
   }
 
-  if (!cb.called) return cb(null, ret)
+  cb(null, ret)
+}
+
+function arrayify (val) {
+  if (!val) return []
+  if (Array.isArray(val)) return val
+  return [val]
 }

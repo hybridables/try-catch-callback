@@ -66,11 +66,38 @@ test('should return thunk if no `cb` passed', function (done) {
 test('should pass the `cb` to `fn` if 3rd arg is strictly `true`', function (done) {
   tryCatch(function (cb) {
     test.strictEqual(typeof cb, 'function')
-  }, done, true)
+  }, done, { passCallback: true })
 })
 
 test('should `fn` not have arguments if 3rd arg is not `true`', function (done) {
   tryCatch(function () {
     test.strictEqual(arguments.length, 0)
+  }, done)
+})
+
+test('should be able to pass custom arguments to `fn` through options', function (done) {
+  tryCatch(function (foo, bar, qux) {
+    test.strictEqual(arguments.length, 3)
+    test.strictEqual(foo, 1)
+    test.strictEqual(bar, true)
+    test.strictEqual(qux, 'foo')
+  }, done, { args: [1, true, 'foo'] })
+  done()
+})
+
+test('should be able to pass custom `fn` context through options', function (done) {
+  tryCatch(function (aa) {
+    test.strictEqual(aa, 'bb')
+    test.strictEqual(this.foo, 'bar')
+  }, done, {
+    context: { foo: 'bar' },
+    args: 'bb'
+  })
+})
+
+test('should pass custom context using `tryCatch.call`', function (done) {
+  tryCatch.call({ abc: 'def', qux: true }, function () {
+    test.strictEqual(this.abc, 'def')
+    test.strictEqual(this.qux, true)
   }, done)
 })
