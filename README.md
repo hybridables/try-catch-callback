@@ -74,6 +74,19 @@ tryCatchCallback((ctx, qux) => {
 // => 'zzz123'
 ```
 
+**returning a thunk**
+
+```js
+const tryCatch = require('try-catch-callback')
+const thunk = tryCatch((a, b) => {
+  return a + b + 3
+}, { args: [1, 2] })
+
+thunk((err, res) => {
+  console.log(res) // => 6
+})
+```
+
 ## Related
 - [catchup](https://www.npmjs.com/package/catchup): Graceful error handling. Because core `domain` module is deprecated. This share almost… [more](https://github.com/tunnckocore/catchup#readme) | [homepage](https://github.com/tunnckocore/catchup#readme "Graceful error handling. Because core `domain` module is deprecated. This share almost the same API.")
 - [gana-compile](https://www.npmjs.com/package/gana-compile): Pretty small synchronous template engine built on ES2015 Template Strings, working on… [more](https://github.com/tunnckocore/gana-compile#readme) | [homepage](https://github.com/tunnckocore/gana-compile#readme "Pretty small synchronous template engine built on ES2015 Template Strings, working on `node@0.10` too. No RegExps, support for helpers and what you want. Use [gana][] if you wanna both async and sync support.")
