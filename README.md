@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/hybridables">
+    <img height="250" width="250" src="https://avatars1.githubusercontent.com/u/10666022?v=3&s=250">
+  </a>
+</p>
+
 # [try-catch-callback][author-www-url] [![npmjs.com][npmjs-img]][npmjs-url] [![The MIT License][license-img]][license-url] [![npm downloads][downloads-img]][downloads-url] 
 
 > try/catch block with a callback, used in [try-catch-core][]. Use it when you don't care about asyncness so much and don't want guarantees. If you care use [try-catch-core][].
@@ -95,7 +101,7 @@ thunk((err, res) => {
 - [try-require-please](https://www.npmjs.com/package/try-require-please): Try to require the given module, failing loudly with default message if… [more](https://github.com/tunnckocore/try-require-please#readme) | [homepage](https://github.com/tunnckocore/try-require-please#readme "Try to require the given module, failing loudly with default message if module does not exists.")
 
 ## Contributing
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/tunnckoCore/try-catch-callback/issues/new).  
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/hybridables/try-catch-callback/issues/new).  
 But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) guidelines.
 
 ## [Charlike Make Reagent](http://j.mp/1stW47C) [![new message to charlike][new-message-img]][new-message-url] [![freenode #charlike][freenode-img]][freenode-url]
@@ -112,23 +118,23 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [npmjs-url]: https://www.npmjs.com/package/try-catch-callback
 [npmjs-img]: https://img.shields.io/npm/v/try-catch-callback.svg?label=try-catch-callback
 
-[license-url]: https://github.com/tunnckoCore/try-catch-callback/blob/master/LICENSE
+[license-url]: https://github.com/hybridables/try-catch-callback/blob/master/LICENSE
 [license-img]: https://img.shields.io/npm/l/try-catch-callback.svg
 
 [downloads-url]: https://www.npmjs.com/package/try-catch-callback
 [downloads-img]: https://img.shields.io/npm/dm/try-catch-callback.svg
 
-[codeclimate-url]: https://codeclimate.com/github/tunnckoCore/try-catch-callback
-[codeclimate-img]: https://img.shields.io/codeclimate/github/tunnckoCore/try-catch-callback.svg
+[codeclimate-url]: https://codeclimate.com/github/hybridables/try-catch-callback
+[codeclimate-img]: https://img.shields.io/codeclimate/github/hybridables/try-catch-callback.svg
 
-[travis-url]: https://travis-ci.org/tunnckoCore/try-catch-callback
-[travis-img]: https://img.shields.io/travis/tunnckoCore/try-catch-callback/master.svg
+[travis-url]: https://travis-ci.org/hybridables/try-catch-callback
+[travis-img]: https://img.shields.io/travis/hybridables/try-catch-callback/master.svg
 
-[coveralls-url]: https://coveralls.io/r/tunnckoCore/try-catch-callback
-[coveralls-img]: https://img.shields.io/coveralls/tunnckoCore/try-catch-callback.svg
+[coveralls-url]: https://coveralls.io/r/hybridables/try-catch-callback
+[coveralls-img]: https://img.shields.io/coveralls/hybridables/try-catch-callback.svg
 
-[david-url]: https://david-dm.org/tunnckoCore/try-catch-callback
-[david-img]: https://img.shields.io/david/tunnckoCore/try-catch-callback.svg
+[david-url]: https://david-dm.org/hybridables/try-catch-callback
+[david-img]: https://img.shields.io/david/hybridables/try-catch-callback.svg
 
 [standard-url]: https://github.com/feross/standard
 [standard-img]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg

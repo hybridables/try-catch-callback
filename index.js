@@ -1,5 +1,5 @@
 /*!
- * try-catch-callback <https://github.com/tunnckoCore/try-catch-callback>
+ * try-catch-callback <https://github.com/hybridables/try-catch-callback>
  *
  * Copyright (c) 2016 Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)
  * Released under the MIT license.
