@@ -68,7 +68,7 @@ function tryCatch (fn, cb, opts) {
     return cb(err)
   }
 
-  cb(null, ret)
+  if (!options.passCallback) cb(null, ret)
 }
 
 function arrayify (val) {
