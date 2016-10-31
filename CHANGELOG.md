@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/hybridables/try-catch-callback/compare/v1.1.2...v2.0.0) (2016-10-31)
+
+
+### Code Refactoring
+
+* **order:** switch arguments order ([8b460d9](https://github.com/hybridables/try-catch-callback/commit/8b460d9))
+
+
+### BREAKING CHANGES
+
+* order: switch arguments order to follow convertions correctly
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/hybridables/try-catch-callback/compare/v1.1.1...v1.1.2) (2016-10-31)
 
