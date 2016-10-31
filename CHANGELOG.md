@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/hybridables/try-catch-callback/compare/v1.1.1...v1.1.2) (2016-10-31)
+
+
+### Bug Fixes
+
+* **callback:** should not call the cb after try/catch if passCallback:true ([afc59b1](https://github.com/hybridables/try-catch-callback/commit/afc59b1))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/hybridables/try-catch-callback/compare/v1.1.0...v1.1.1) (2016-10-30)
 
