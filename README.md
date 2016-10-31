@@ -28,11 +28,11 @@ const tryCatchCallback = require('try-catch-callback')
 **Params**
 
 * `<fn>` **{Function}**: function to be called.    
-* `[cb]` **{Function}**: callback with `cb(err, res)` signature.    
 * `[opts]` **{Object}**: optional options, such as `context` and `args`    
 * `[opts.context]` **{Object}**: context to be passed to `fn`    
 * `[opts.args]` **{Array}**: custom argument(s) to be pass to `fn`, given value is arrayified    
 * `[opts.passCallback]` **{Boolean}**: pass `true` if you want `cb` to be passed to `fn` args.    
+* `[cb]` **{Function}**: callback with `cb(err, res)` signature.    
 * `returns` **{Function}** `thunk`: if `cb` not given.  
 
 **Example**
@@ -57,11 +57,11 @@ tryCatch(function () {
   console.log(this.foo) // => 'bar'
   console.log(this.baz) // => 'qux'
   return `${this.foo}/${this.baz}`
+}, {
+  context: { foo: 'bar', baz: 'qux' }
 }, function done (err, res) {
   if (err) return console.error(err)
   console.log(res) // => 'bar/qux'
-}, {
-  context: { foo: 'bar', baz: 'qux' }
 })
 ```
 
@@ -69,15 +69,15 @@ tryCatch(function () {
 
 ```js
 const tryCatchCallback = require('try-catch-callback')
-const done = (err, res) => console.log(res)
+const done = (err, res) => console.log(res) // => 'zzz123'
 const opts = {
   args: [ { foo: 'zzz' }, 123 ]
 }
 
 tryCatchCallback((ctx, qux) => {
   return ctx.foo + qux
-}, done, opts)
-// => 'zzz123'
+}, opts, done)
+
 ```
 
 **returning a thunk**
