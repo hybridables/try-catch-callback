@@ -30,30 +30,34 @@
  * ```
  *
  * @param  {Function} `<fn>` function to be called.
- * @param  {Function} `[cb]` callback with `cb(err, res)` signature.
  * @param  {Object} `[opts]` optional options, such as `context` and `args`
  * @param  {Object} `[opts.context]` context to be passed to `fn`
  * @param  {Array} `[opts.args]` custom argument(s) to be pass to `fn`, given value is arrayified
  * @param  {Boolean} `[opts.passCallback]` pass `true` if you want `cb` to be passed to `fn` args.
+ * @param  {Function} `[cb]` callback with `cb(err, res)` signature.
  * @return {Function} `thunk` if `cb` not given.
  * @throws {TypError} if `fn` not a function.
  * @throws {TypError} if no function is passed to `thunk`.
  * @api public
  */
 
-module.exports = function tryCatchCallback (fn, cb, opts) {
+module.exports = function tryCatchCallback (fn, opts, cb) {
   if (typeof fn !== 'function') {
     throw new TypeError('try-catch-callback: expect `fn` to be a function')
   }
+  if (typeof opts === 'function') {
+    cb = opts
+    opts = null
+  }
   if (typeof cb !== 'function') {
     return function thunk (done) {
-      tryCatch.call(this, fn, done, cb || opts)
+      tryCatch.call(this, fn, opts, done)
     }
   }
-  tryCatch.call(this, fn, cb, opts)
+  tryCatch.call(this, fn, opts, cb)
 }
 
-function tryCatch (fn, cb, opts) {
+function tryCatch (fn, opts, cb) {
   if (typeof cb !== 'function') {
     throw new TypeError('try-catch-callback: expect `cb` to be a function')
   }
