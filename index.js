@@ -49,30 +49,33 @@ module.exports = function tryCatchCallback (fn, opts, cb) {
     cb = opts
     opts = null
   }
-  if (typeof cb !== 'function') {
-    return function thunk (done) {
-      tryCatch.call(this, fn, opts, done)
-    }
+  opts = opts && typeof opts === 'object' ? opts : {}
+
+  if (opts.return || typeof cb === 'function') {
+    return tryCatch.call(this, fn, opts, cb)
   }
-  tryCatch.call(this, fn, opts, cb)
+  return function thunk (done) {
+    opts.thunk = true
+    tryCatch.call(this, fn, opts, done)
+  }
 }
 
 function tryCatch (fn, opts, cb) {
-  if (typeof cb !== 'function') {
+  if (opts.thunk && typeof cb !== 'function') {
     throw new TypeError('try-catch-callback: expect `cb` to be a function')
   }
-  var options = opts && typeof opts === 'object' ? opts : {}
-  var ctx = options.context || this
-  var args = arrayify(options.args)
+  var args = arrayify(opts.args)
+  var ctx = opts.context || this
   var ret = null
 
   try {
-    ret = fn.apply(ctx, options.passCallback ? args.concat(cb) : args)
+    ret = fn.apply(ctx, opts.passCallback ? args.concat(cb) : args)
   } catch (err) {
-    return cb(err)
+    return opts.return ? err : cb(err)
   }
 
-  if (!options.passCallback) cb(null, ret)
+  if (opts.return) return ret
+  if (!opts.passCallback) cb(null, ret)
 }
 
 function arrayify (val) {

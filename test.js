@@ -109,3 +109,22 @@ test('should allow passing options when want thunk', function (done) {
   test.strictEqual(typeof thunk, 'function')
   thunk(done)
 })
+
+test('should return error if `opts.return:true`', function (done) {
+  var err = tryCatch(function () {
+    throw new TypeError('foo baq xx')
+  }, { return: true })
+
+  test.strictEqual(err.name, 'TypeError')
+  test.strictEqual(err.message, 'foo baq xx')
+  done()
+})
+
+test('should return value if `opts.return:true`', function (done) {
+  var val = tryCatch(function () {
+    return 123
+  }, { return: true })
+
+  test.strictEqual(val, 123)
+  done()
+})
