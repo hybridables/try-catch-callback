@@ -33,7 +33,8 @@
  * @param  {Object} `[opts]` optional options, such as `context` and `args`
  * @param  {Object} `[opts.context]` context to be passed to `fn`
  * @param  {Array} `[opts.args]` custom argument(s) to be pass to `fn`, given value is arrayified
- * @param  {Boolean} `[opts.passCallback]` pass `true` if you want `cb` to be passed to `fn` args.
+ * @param  {Boolean} `[opts.passCallback]` pass `true` if you want `cb` to be passed to `fn` args
+ * @param  {Boolean} `[opts.return]` if `true` returns error/value and does not calls `cb`
  * @param  {Function} `[cb]` callback with `cb(err, res)` signature.
  * @return {Function} `thunk` if `cb` not given.
  * @throws {TypError} if `fn` not a function.

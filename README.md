@@ -22,7 +22,7 @@ npm i try-catch-callback --save
 const tryCatchCallback = require('try-catch-callback')
 ```
 
-### [tryCatchCallback](index.js#L44)
+### [tryCatchCallback](index.js#L45)
 > Pass a synchronous `fn` that returns some result and handle completion or errors in `cb` if given, otherwise it returns thunk which accepts that `cb`. It's possible to not work in "async mode", if that's the case try to use [try-catch-core][] for your case, which guarantees that `cb` is called only once and always in next tick, using [dezalgo][] and [once][].
 
 **Params**
@@ -31,7 +31,8 @@ const tryCatchCallback = require('try-catch-callback')
 * `[opts]` **{Object}**: optional options, such as `context` and `args`    
 * `[opts.context]` **{Object}**: context to be passed to `fn`    
 * `[opts.args]` **{Array}**: custom argument(s) to be pass to `fn`, given value is arrayified    
-* `[opts.passCallback]` **{Boolean}**: pass `true` if you want `cb` to be passed to `fn` args.    
+* `[opts.passCallback]` **{Boolean}**: pass `true` if you want `cb` to be passed to `fn` args    
+* `[opts.return]` **{Boolean}**: if `true` returns error/value and does not calls `cb`    
 * `[cb]` **{Function}**: callback with `cb(err, res)` signature.    
 * `returns` **{Function}** `thunk`: if `cb` not given.  
 
@@ -97,7 +98,7 @@ thunk((err, res) => {
 - [catchup](https://www.npmjs.com/package/catchup): Graceful error handling. Because core `domain` module is deprecated. This share almost… [more](https://github.com/tunnckocore/catchup#readme) | [homepage](https://github.com/tunnckocore/catchup#readme "Graceful error handling. Because core `domain` module is deprecated. This share almost the same API.")
 - [gana-compile](https://www.npmjs.com/package/gana-compile): Pretty small synchronous template engine built on ES2015 Template Strings, working on… [more](https://github.com/tunnckocore/gana-compile#readme) | [homepage](https://github.com/tunnckocore/gana-compile#readme "Pretty small synchronous template engine built on ES2015 Template Strings, working on `node@0.10` too. No RegExps, support for helpers and what you want. Use [gana][] if you wanna both async and sync support.")
 - [gana](https://www.npmjs.com/package/gana): Small and powerful template engine with only sync and async compile. The… [more](https://github.com/tunnckocore/gana#readme) | [homepage](https://github.com/tunnckocore/gana#readme "Small and powerful template engine with only sync and async compile. The mid-level between [es6-template][] and [gana-compile][].")
-- [try-catch-core](https://www.npmjs.com/package/try-catch-core): Asynchronous and sync tryCatch in one place. The callback is securely wrapped… [more](https://github.com/tunnckocore/try-catch-core#readme) | [homepage](https://github.com/tunnckocore/try-catch-core#readme "Asynchronous and sync tryCatch in one place. The callback is securely wrapped with a [dezalgo][] and [once][].")
+- [try-catch-core](https://www.npmjs.com/package/try-catch-core): Low-level package to handle completion and errors of sync or asynchronous functions… [more](https://github.com/hybridables/try-catch-core#readme) | [homepage](https://github.com/hybridables/try-catch-core#readme "Low-level package to handle completion and errors of sync or asynchronous functions, using [once][] and [dezalgo][] libs. Useful for and used in higher-level libs such as [always-done][] to handle completion of anything.")
 - [try-require-please](https://www.npmjs.com/package/try-require-please): Try to require the given module, failing loudly with default message if… [more](https://github.com/tunnckocore/try-require-please#readme) | [homepage](https://github.com/tunnckocore/try-require-please#readme "Try to require the given module, failing loudly with default message if module does not exists.")
 
 ## Contributing
@@ -113,7 +114,7 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [gana-compile]: https://github.com/tunnckocore/gana-compile
 [gana]: https://github.com/tunnckocore/gana
 [once]: https://github.com/isaacs/once
-[try-catch-core]: https://github.com/tunnckocore/try-catch-core
+[try-catch-core]: https://github.com/hybridables/try-catch-core
 
 [npmjs-url]: https://www.npmjs.com/package/try-catch-callback
 [npmjs-img]: https://img.shields.io/npm/v/try-catch-callback.svg?label=try-catch-callback
@@ -160,3 +161,4 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [new-message-url]: https://github.com/tunnckoCore/ama
 [new-message-img]: https://img.shields.io/badge/ask%20me-anything-green.svg
 
+[always-done]: https://github.com/hybridables/always-done
