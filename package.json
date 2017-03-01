@@ -1,6 +1,6 @@
 {
   "name": "try-catch-callback",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "try/catch block with a callback, used in [try-catch-core][]. Use it when you don't care about asyncness so much and don't want guarantees. If you care use [try-catch-core][].",
   "repository": "hybridables/try-catch-callback",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
