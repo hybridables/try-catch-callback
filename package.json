@@ -69,11 +69,17 @@
     },
     "reflinks": [
       "dezalgo",
-      "once",
-      "try-catch-core",
       "es6-template",
       "gana",
-      "gana-compile"
+      "gana-compile",
+      "once",
+      "try-catch-core",
+      "always-done",
+      "charlike",
+      "commitizen",
+      "standard-version",
+      "verb",
+      "verb-generate-readme"
     ],
     "lint": {
       "reflinks": true
