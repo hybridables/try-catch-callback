@@ -7,6 +7,8 @@
 
 'use strict'
 
+var extend = require('extend-shallow')
+
 /**
  * > Pass a synchronous `fn` that returns some
  * result and handle completion or errors in `cb`
@@ -48,9 +50,9 @@ module.exports = function tryCatchCallback (fn, opts, cb) {
   }
   if (typeof opts === 'function') {
     cb = opts
-    opts = null
+    opts = false
   }
-  opts = opts && typeof opts === 'object' ? opts : {}
+  opts = extend({}, opts)
 
   if (opts.return || typeof cb === 'function') {
     return tryCatch.call(this, fn, opts, cb)
